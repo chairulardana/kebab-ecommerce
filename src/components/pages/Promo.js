@@ -1,5 +1,5 @@
 import React from 'react';
-import './Promo.css';
+import '../styles/Promo.css';
 
 const PromoPage = () => {
   const promoItems = [

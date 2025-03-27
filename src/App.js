@@ -1,28 +1,53 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import NavigationBar from './components/Navbar';
-import Menu from './components/Menu';
-import Promo from './components/Promo';
-import AboutUs from './components/AboutUs';
-import OrderButton from './components/OrderButton';
-import Login from './components/Login';
-import Register from './components/Register';
+import NavigationBar from './components/common/Navbar';
+import Menu from './components/pages/Menu';
+import Promo from './components/pages/Promo';
+import AboutUs from './components/common/AboutUs';
+import OrderButton from './components/common/OrderButton';
+import Login from './components/pages/Login';
+import Register from './components/pages/Register';
+import Cart from './components/pages/Cart';
+import './App.css';
+import { Container } from 'react-bootstrap';
 
 function App() {
-  return (
-    <Router>
-      <NavigationBar />
-      <Routes>
-        <Route path="/" element={<Menu />} />
-        <Route path="/menu" element={<Menu />} />
-        <Route path="/promo" element={<Promo />} />
-        <Route path="/about" element={<AboutUs />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<Register />} />
-      </Routes>
-      <OrderButton />
-    </Router>
-  );
+    const navbarRef = useRef(null);
+    const contentRef = useRef(null);
+
+    useEffect(() => {
+        const handleResize = () => {
+            if (navbarRef.current && contentRef.current) {
+                contentRef.current.style.paddingTop = `${navbarRef.current.offsetHeight}px`;
+            }
+        };
+
+        handleResize();
+
+        window.addEventListener('resize', handleResize);
+
+        return () => window.removeEventListener('resize', handleResize);
+    }, []);
+
+    return (
+        <Router>
+            <div className="App">
+                <NavigationBar ref={navbarRef} />
+                <div className="content" ref={contentRef}> {/* Pastikan contentRef terpasang di sini */}
+                    <Routes>
+                            <Route path="/" element={<Menu />} />
+                            <Route path="/menu" element={<Menu />} />
+                            <Route path="/promo" element={<Promo />} />
+                            <Route path="/about" element={<AboutUs />} />
+                            <Route path="/login" element={<Login />} />
+                            <Route path="/register" element={<Register />} />
+                            <Route path="/cart" element={<Cart />} />
+                            </Routes>
+                </div>
+                <OrderButton />
+            </div>
+        </Router>
+    );
 }
 
 export default App;

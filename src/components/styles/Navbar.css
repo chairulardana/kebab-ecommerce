@@ -3,10 +3,6 @@
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Bayangan untuk efek depth */
 }
 
-.spacer {
-    height: 50px; /* Sesuaikan tinggi spacer dengan tinggi navbar */
-}
-
 .navbar-logo {
     font-weight: bold;
     color: #ffffff;

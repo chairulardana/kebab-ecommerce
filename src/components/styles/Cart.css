@@ -1,0 +1,70 @@
+/* Cart.css */
+.cart-container {
+    margin: 50px auto;
+    padding: 20px;
+    max-width: 600px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.cart-title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.table {
+    margin-top: 15px;
+    text-align: center;
+}
+
+.table th {
+    background-color: #f8f9fa;
+    font-weight: bold;
+}
+
+.total-harga {
+    font-size: 20px;
+    font-weight: bold;
+    margin-top: 20px;
+    color: #28a745;
+}
+
+.payment-method {
+    margin-top: 20px;
+    text-align: left;
+}
+
+.pay-button, .back-button {
+    margin-top: 15px;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+}
+
+.pay-button {
+    background-color: #28a745;
+    border: none;
+}
+
+.pay-button:hover {
+    background-color: #218838;
+}
+
+.back-button {
+    background-color: #6c757d;
+    border: none;
+    color: white;
+}
+
+.back-button:hover {
+    background-color: #5a6268;
+}
+
+.btn-danger {
+    padding: 5px 10px;
+    font-size: 14px;
+    border-radius: 5px;
+}
