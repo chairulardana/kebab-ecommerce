@@ -11,7 +11,7 @@ const Login = () => {
 
     const handleLogin = async () => {
         try {
-            const response = await axios.post('http://192.168.52.157:9999/api/auth/login', {
+            const response = await axios.post('http://192.168.1.23:9999/api/auth/login', {
                 email: email,
                 password: password,
             });
@@ -20,13 +20,35 @@ const Login = () => {
             const decodedToken = jwtDecode(token);
 
             const role = decodedToken["http://schemas.microsoft.com/ws/2008/06/identity/claims/role"];
+            const userId = decodedToken["http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier"];
 
             if (role !== 'User') {
                 alert('Hanya pengguna dengan role "User" yang dapat login.');
                 return;
             }
 
+            // Simpan token dan ID ke localStorage
             localStorage.setItem('token', token);
+            localStorage.setItem('userId', userId); // opsional kalau mau dipakai nanti
+
+            // Ambil data user berdasarkan ID
+            try {
+                const userRes = await axios.get(`http://192.168.1.23:9999/api/users/${userId}`, {
+                    headers: { Authorization: `Bearer ${token}` },
+                });
+
+                const name = userRes.data?.name?.trim() || 'User';
+                localStorage.setItem('userData', JSON.stringify({ name }));
+
+                console.log('Login berhasil. Nama pengguna:', name);
+            } catch (err) {
+                console.error('Gagal mengambil data user saat login:', err);
+            }
+
+            // Trigger event ke Navbar
+            window.dispatchEvent(new Event('login-success'));
+
+            // Navigasi ke halaman menu
             navigate('/menu');
         } catch (error) {
             console.error('Login failed:', error.response?.data || error.message);

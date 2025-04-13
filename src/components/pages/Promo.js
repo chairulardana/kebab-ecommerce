@@ -19,7 +19,7 @@ const PromoPage = () => {
 
   return (
     <div className="promo-container">
-      <h1 className="promo-title">🔥 Promo Spesial Hari Ini! 🔥</h1>
+      <h1 className="promo-title"> Promo Spesial Hari Ini!🔥</h1>
       <div className="promo-list">
         {promoItems.map((promo, index) => (
           <div key={index} className="promo-card">

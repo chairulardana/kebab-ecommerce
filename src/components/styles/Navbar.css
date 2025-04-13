@@ -1,46 +1,53 @@
 .custom-navbar {
-    border-bottom: 2px solid #000000;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Bayangan untuk efek depth */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    background-color: hsl(204, 100%, 82%);
 }
 
-.navbar-logo {
+.custom-navbar .navbar-logo { /* Tambahkan .custom-navbar */
     font-weight: bold;
-    color: #ffffff;
+    color: #1976d2;
     font-size: 24px;
 }
 
-.navbar-search {
+.custom-navbar .navbar-search { /* Tambahkan .custom-navbar */
     display: flex;
     align-items: center;
     max-width: 350px;
-    width: 100%; 
-    background-color: #f3f3f3;
+    width: 100%;
+    background-color: #fff;
     border-radius: 20px;
     padding: 5px 10px;
     margin-left: auto;
     margin-right: auto;
 }
 
-.search-input {
+.custom-navbar .search-input { /* Tambahkan .custom-navbar */
     border: none;
     outline: none;
     background: transparent;
     flex: 1;
 }
 
-.btn-search {
+.custom-navbar .btn-search { /* Tambahkan .custom-navbar */
     border-radius: 20px;
     padding: 5px 15px;
+    background-color: #1976d2;
+    color: #fff;
+    border: none;
 }
 
-.navbar-icons {
+.custom-navbar .btn-search:hover { /* Tambahkan .custom-navbar */
+    background-color: #1565c0;
+}
+
+.custom-navbar .navbar-icons { /* Tambahkan .custom-navbar */
     display: flex;
     align-items: center;
     gap: 15px;
 }
 
-.cart-icon {
-    color: #ffffff;
+.custom-navbar .cart-icon { /* Tambahkan .custom-navbar */
+    color: #1976d2;
     font-size: 24px;
     text-decoration: none;
     margin: 0 10px;
@@ -48,7 +55,28 @@
     align-items: center;
 }
 
-.btn-login,
-.btn-register {
+.custom-navbar .btn-login { /* Tambahkan .custom-navbar */
     border-radius: 20px;
+    background-color: #1976d2;
+    color: #fff;
+    border: none;
+    padding: 8px 16px;
+}
+
+.custom-navbar .btn-login:hover { /* Tambahkan .custom-navbar */
+    background-color: #1565c0;
+}
+
+.custom-navbar .btn-register {
+    border-radius: 20px;
+    background-color: #42a5f5; /* Biru muda untuk latar belakang */
+    color: #fff; /* Warna teks putih */
+    border: 1px solid #1e88e5; /* Border biru lebih gelap */
+    padding: 8px 16px;
+    transition: background-color 0.3s ease; /* Transisi halus */
+}
+
+.custom-navbar .btn-register:hover {
+    background-color: #1e88e5; /* Biru lebih gelap saat hover */
+    border-color: #1565c0; /* Border biru lebih gelap saat hover */
 }

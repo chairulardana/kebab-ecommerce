@@ -8,12 +8,14 @@ import OrderButton from './components/common/OrderButton';
 import Login from './components/pages/Login';
 import Register from './components/pages/Register';
 import Cart from './components/pages/Cart';
+import Search from './components/pages/Search';
 import './App.css';
 
 function App() {
     const navbarRef = useRef(null);
     const contentRef = useRef(null);
 
+    // Adjust padding to prevent navbar overlapping
     useEffect(() => {
         const handleResize = () => {
             if (navbarRef.current && contentRef.current) {
@@ -21,10 +23,9 @@ function App() {
             }
         };
 
-        handleResize();
+        handleResize(); // initial
 
         window.addEventListener('resize', handleResize);
-
         return () => window.removeEventListener('resize', handleResize);
     }, []);
 
@@ -32,17 +33,18 @@ function App() {
         <Router>
             <div className="App">
                 <NavigationBar ref={navbarRef} />
-                <div className="content" ref={contentRef}> {/* Pastikan contentRef terpasang di sini */}
+                <main className="content" ref={contentRef}>
                     <Routes>
-                            <Route path="/" element={<Menu />} />
-                            <Route path="/menu" element={<Menu />} />
-                            <Route path="/promo" element={<Promo />} />
-                            <Route path="/about" element={<AboutUs />} />
-                            <Route path="/login" element={<Login />} />
-                            <Route path="/register" element={<Register />} />
-                            <Route path="/cart" element={<Cart />} />
-                            </Routes>
-                </div>
+                        <Route path="/" element={<Menu />} />
+                        <Route path="/menu" element={<Menu />} />
+                        <Route path="/promo" element={<Promo />} />
+                        <Route path="/about" element={<AboutUs />} />
+                        <Route path="/login" element={<Login />} />
+                        <Route path="/register" element={<Register />} />
+                        <Route path="/cart" element={<Cart />} />
+                        <Route path="/search" element={<Search />} />
+                    </Routes>
+                </main>
                 <OrderButton />
             </div>
         </Router>

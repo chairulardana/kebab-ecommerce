@@ -23,7 +23,7 @@ body {
     font-weight: bold;
     margin-bottom: 30px; /* Margin lebih besar untuk ruang yang lebih baik */
     text-align: center; /* Pusatkan judul */
-    color: #FF4500; /* Warna judul yang sama dengan border input */
+    color: #1976d2; /* Warna judul yang sama dengan border input */
 }
 
 .form-group {
@@ -41,7 +41,7 @@ label {
     width: 100%;
     padding: 12px; /* Padding lebih besar untuk input */
     margin: 5px 0;
-    border: 2px solid #FF4500;
+    border: 2px solid #1976d2;
     border-radius: 8px;
     box-sizing: border-box; /* Pastikan padding dan border termasuk dalam lebar */
 }
@@ -60,7 +60,7 @@ label {
 }
 
 .auth-button {
-    background-color: #FFA500;
+    background-color: #004cff;
     color: #fff;
     border: none;
     padding: 12px 20px; /* Padding lebih besar untuk tombol */
@@ -72,11 +72,11 @@ label {
 }
 
 .auth-button:hover {
-    background-color: #FF4500;
+    background-color: #1976d2;
 }
 
 .auth-link {
-    color: #FFA500;
+    color: #0077ff;
     text-decoration: none;
     text-align: center; /* Pusatkan tautan */
     display: block; /* Tautan sebagai blok agar text-align berfungsi */

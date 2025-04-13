@@ -1,0 +1,66 @@
+/* src/pages/AboutUs.css */
+
+.menu-content-area {
+    max-width: 960px; /* Lebar kontainer yang lebih umum untuk konten */
+    margin: 40px auto; /* Margin atas-bawah lebih besar untuk ruang */
+    padding: 40px;
+    background-color: #fff; /* Latar belakang putih untuk kontainer */
+    border-radius: 10px; /* Sudut yang sedikit membulat */
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.15); /* Bayangan yang lebih terasa */
+    font-family: 'ComicNeueBoldItalic', system-ui, -apple-system, sans-serif;
+    font-weight: bold;
+    font-style: italic;
+    color: #333;
+    line-height: 1.6;
+}
+
+.menu-category h2 {
+    text-align: left;
+    margin-bottom: 30px;
+    color: #1e90ff; /* Biru untuk judul utama */
+    font-size: 2.8rem; /* Ukuran font lebih besar */
+    padding-bottom: 15px;
+    border-bottom: 3px solid #42a5f5; /* Garis bawah lebih tebal */
+}
+
+.section {
+    margin-bottom: 35px;
+}
+
+.section h3 {
+    color: #1976d2; /* Biru untuk subjudul */
+    font-size: 2rem; /* Ukuran font lebih besar */
+    margin-bottom: 18px;
+}
+
+.section p,
+.section ul {
+    margin-bottom: 20px;
+    font-size: 1.1rem; /* Ukuran font teks lebih besar */
+}
+
+.contact-info ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.contact-info li {
+    margin-bottom: 10px;
+    font-size: 1.1rem;
+}
+
+.contact-info strong {
+    font-weight: bold;
+}
+
+/* Gaya untuk footer di dalam kontainer */
+.menu-content-area footer {
+    text-align: center;
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 1px solid #eee; /* Garis pemisah untuk footer */
+    color: #777;
+    font-size: 0.9em;
+    font-style: normal; /* Kembalikan ke normal untuk copyright */
+    font-weight: normal;
+}

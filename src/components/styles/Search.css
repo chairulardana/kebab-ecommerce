@@ -1,0 +1,123 @@
+/* Search.css */
+.mt-5 {
+    margin-top: 3rem !important;
+}
+
+.search-results-container {
+    margin-top: 20px;
+}
+
+.search-results-container h2 {
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.search-results-container .row { /* Target elemen Row Bootstrap */
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: -15px; /* Sesuaikan dengan gutter Bootstrap */
+    margin-right: -15px; /* Sesuaikan dengan gutter Bootstrap */
+}
+
+.search-results-container .col { /* Target elemen Col Bootstrap */
+    flex-basis: auto;
+    width: auto;
+    padding-left: 15px; /* Sesuaikan dengan gutter Bootstrap */
+    padding-right: 15px; /* Sesuaikan dengan gutter Bootstrap */
+}
+
+/* Aturan untuk berbagai ukuran layar (sesuaikan breakpoint Bootstrap) */
+@media (min-width: 576px) {
+    .search-results-container .col-sm-6 {
+        flex: 0 0 auto;
+        width: 50%;
+    }
+}
+
+@media (min-width: 768px) {
+    .search-results-container .col-md-4 {
+        flex: 0 0 auto;
+        width: 33.33333333%;
+    }
+}
+
+@media (min-width: 992px) {
+    .search-results-container .col-lg-3 {
+        flex: 0 0 auto;
+        width: 25%;
+    }
+}
+
+.search-results-container .card {
+    background-color: #ffffff; /* Putih untuk latar belakang item menu */
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Bayangan lebih halus */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    animation: fadeIn 0.8s ease-in-out; /* Anda perlu mendefinisikan @keyframes fadeIn jika belum */
+    display: flex;
+    flex-direction: column; /* Ensure card content flows vertically */
+    height: 100%; /* Make card take full height of its column */
+}
+
+.search-results-container .image-container {
+    position: relative;
+    width: 100%;
+    overflow: hidden; /* Clip any overflowing image */
+}
+
+.search-results-container .card img {
+    width: 100%;
+    height: auto; /* Biarkan tinggi gambar menyesuaikan aspek rasio */
+    object-fit: cover;
+}
+
+.search-results-container .card-body {
+    padding: 10px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.search-results-container .card-title {
+    font-size: 1.1rem;
+    font-weight: bold;
+    margin-bottom: 8px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.search-results-container .menu-price {
+    font-weight: bold;
+    color: #007bff;
+    margin-bottom: 8px;
+}
+
+.search-results-container .order-now-btn {
+    width: 100%;
+    margin-top: auto;
+    font-size: 0.9rem;
+    padding: 8px;
+}
+
+.search-results-container .stock-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+/* Tambahkan definisi @keyframes jika belum ada */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}

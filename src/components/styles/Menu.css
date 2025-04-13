@@ -12,18 +12,17 @@ body {
   font-family: 'ComicNeueBoldItalic', system-ui, -apple-system, sans-serif;
   font-weight: bold;
   font-style: italic;
-  color: #333;
+  color: #333; /* Warna teks utama, tetap abu-abu gelap */
   line-height: 1.5;
-  
 }
 
 .menu-content-area {
   max-width: 1000px;
   margin: 20px;
   padding: 50px;
-  background-color: #f9f9f9;
+  background-color: #e0f2fe; /* Biru muda untuk latar belakang area menu */
   border-radius: 12px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Bayangan lebih halus */
   margin-bottom: 10px;
 }
 
@@ -34,10 +33,10 @@ body {
 .menu-category h2 {
   text-align: left;
   margin-bottom: 20px;
-  color: #ffa600;
+  color: #1e90ff; /* Biru untuk judul kategori */
   font-size: 2.2rem;
   padding: 10px auto;
-  border-bottom: 2px solid #ff7b00;
+  border-bottom: 2px solid #42a5f5; /* Biru lebih terang untuk garis bawah */
 }
 
 .menu-items {
@@ -47,7 +46,7 @@ body {
   gap: 20px;
   box-shadow: none;
   text-align: center;
-  color: #333;
+  color: #333; /* Warna teks item menu, tetap abu-abu gelap */
   border: 1px solid transparent;
   border-radius: .5rem;
   background: transparent;
@@ -55,9 +54,9 @@ body {
 }
 
 .menu-item-custom {
-  background-color: #fff;
+  background-color: #fff; /* Putih untuk latar belakang item menu */
   border-radius: 8px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Bayangan lebih halus */
   overflow: hidden;
   gap: 10px;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -68,7 +67,7 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  position: relative; /* Tambahkan position relative */
+  position: relative;
 }
 
 .menu-image {
@@ -87,17 +86,18 @@ body {
   font-size: 1.6rem;
   margin-bottom: 8px;
   text-transform: capitalize;
+  color: #1976d2; /* Biru untuk judul item menu */
 }
 
 .menu-price {
   font-weight: bold;
-  color: #FF4500;
+  color: #2196f3; /* Biru untuk harga */
   margin-bottom: 12px;
   font-size: 1.1rem;
 }
 
 .order-now-btn {
-  background-color: #FF4500;
+  background-color: #1976d2; /* Biru untuk tombol pesan sekarang */
   color: #fff;
   border: none;
   border-radius: 8px;
@@ -111,7 +111,7 @@ body {
 }
 
 .order-now-btn:hover {
-  background-color: #FF6347;
+  background-color: #1565c0; /* Biru lebih gelap saat hover */
   transform: scale(1.05);
 }
 
@@ -131,20 +131,20 @@ body {
 }
 
 .menu-image-modal {
-  max-height: 300px; /* Sesuaikan tinggi maksimum sesuai kebutuhan */
-  object-fit: contain; /* Agar gambar tidak terdistorsi */
+  max-height: 300px;
+  object-fit: contain;
 }
 
 /* Media Queries untuk Responsivitas */
 @media (max-width: 1024px) {
   .menu-items {
-      grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 
 @media (max-width: 768px) {
   .menu-items {
-      grid-template-columns: 1fr;
-      gap: 15px;
+    grid-template-columns: 1fr;
+    gap: 15px;
   }
 }

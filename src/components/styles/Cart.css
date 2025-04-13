@@ -1,52 +1,100 @@
 /* Cart.css */
 .cart-container {
-    margin: 50px auto;
+    margin: 30px auto;
     padding: 20px;
-    max-width: 600px;
-    background: white;
-    border-radius: 10px;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-    text-align: center;
+    max-width: 1600px; /* Sesuaikan nilai max-width sesuai preferensi Anda */
+    background: #f8f9fa;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 .cart-title {
-    font-size: 24px;
+    font-size: 28px; /* Sedikit diperbesar */
     font-weight: bold;
-    margin-bottom: 20px;
-}
-
-.table {
-    margin-top: 15px;
+    margin-bottom: 30px; /* Jarak bawah diperlebar */
+    color: #343a40;
     text-align: center;
 }
 
-.table th {
-    background-color: #f8f9fa;
+.cart-content {
+    display: flex;
+    gap: 40px; /* Jarak antar box diperlebar */
+    margin-bottom: 40px; /* Jarak bawah diperlebar */
+    align-items: flex-start; /* Agar box sejajar dari atas */
+}
+
+.cart-box, .transactions-box {
+    flex: 1;
+    padding: 25px; /* Padding di dalam box diperlebar */
+    background: #fff;
+    border-radius: 6px;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.05);
+}
+
+.cart-box h3, .transactions-box h3 {
+    font-size: 22px; /* Sedikit diperbesar */
     font-weight: bold;
+    margin-bottom: 20px; /* Jarak bawah diperlebar */
+    color: #343a40;
+    text-align: center;
+}
+
+.table {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    font-size: 16px; /* Ukuran font tabel */
+}
+
+.table th {
+    background-color: #e9ecef;
+    font-weight: bold;
+    color: #495057;
+    text-align: center;
+    padding: 10px; /* Padding sel header */
+}
+
+.table td {
+    text-align: center;
+    vertical-align: middle;
+    padding: 10px; /* Padding sel data */
 }
 
 .total-harga {
-    font-size: 20px;
+    font-size: 20px; /* Sedikit diperbesar */
     font-weight: bold;
-    margin-top: 20px;
+    margin-top: 25px; /* Jarak atas diperlebar */
     color: #28a745;
+    text-align: right;
 }
 
 .payment-method {
-    margin-top: 20px;
-    text-align: left;
+    margin-top: 25px;
+    font-size: 16px; /* Ukuran font select */
+}
+
+.payment-method label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: #495057;
+}
+
+.pay-buttons {
+    margin-top: 30px;
+    text-align: center;
 }
 
 .pay-button, .back-button {
-    margin-top: 15px;
-    padding: 10px 20px;
-    font-size: 16px;
+    padding: 12px 25px; /* Padding tombol diperlebar */
+    font-size: 18px; /* Ukuran font tombol */
     border-radius: 5px;
+    color: #fff;
+    border: none;
+    margin: 0 15px;
 }
 
 .pay-button {
     background-color: #28a745;
-    border: none;
 }
 
 .pay-button:hover {
@@ -55,8 +103,6 @@
 
 .back-button {
     background-color: #6c757d;
-    border: none;
-    color: white;
 }
 
 .back-button:hover {
@@ -64,7 +110,119 @@
 }
 
 .btn-danger {
-    padding: 5px 10px;
-    font-size: 14px;
+    padding: 10px 15px; /* Padding tombol minus */
+    font-size: 16px; /* Ukuran font tombol minus */
     border-radius: 5px;
+    background-color: #dc3545;
+    color: #fff;
+    border: none;
+}
+
+.btn-danger:hover {
+    background-color: #c82333;
+}
+
+/* Transactions Box Styling */
+.transactions-box {
+    overflow-y: auto;
+    max-height: 700px; /* Sesuaikan tinggi maksimal riwayat transaksi */
+}
+
+.transaction-card {
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+}
+
+.transaction-card-header {
+    background-color: #f0f0f0;
+    padding: 12px 20px;
+    border-bottom: 1px solid #ddd;
+    font-weight: bold;
+    font-size: 16px; /* Ukuran font header kartu transaksi */
+}
+
+.transaction-card-body {
+    padding: 20px;
+}
+
+.transaction-info {
+    margin-bottom: 12px;
+    font-size: 16px; /* Ukuran font info transaksi */
+}
+
+.driver-info {
+    margin-top: 20px;
+    padding: 15px;
+    background-color: #e9ecef;
+    border-radius: 4px;
+    font-size: 16px; /* Ukuran font info driver */
+}
+
+.driver-info p {
+    margin-bottom: 8px;
+}
+
+.transaction-actions {
+    text-align: right;
+    padding: 10px 20px;
+    background-color: #f8f9fa;
+    border-top: 1px solid #ddd;
+    border-bottom-left-radius: 6px;
+    border-bottom-right-radius: 6px;
+}
+
+.badge {
+    font-size: 14px; /* Ukuran font badge status */
+    padding: 8px 12px;
+    border-radius: 5px;
+}
+
+.badge-warning {
+    background-color: #ffc107;
+    color: #212529;
+}
+
+.badge-success {
+    background-color: #28a745;
+    color: #fff;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1200px) {
+    .cart-content {
+        flex-direction: column;
+        gap: 30px;
+    }
+
+    .cart-box, .transactions-box {
+        width: 100%;
+    }
+
+    .pay-buttons {
+        flex-direction: row; /* Kembali ke row untuk layar lebih kecil tapi tidak terlalu kecil */
+        justify-content: center;
+        gap: 10px;
+    }
+}
+
+@media (max-width: 768px) {
+    .cart-content {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .cart-box, .transactions-box {
+        width: 100%;
+    }
+
+    .pay-buttons {
+        flex-direction: column; /* Kembali ke column untuk layar kecil */
+        gap: 10px;
+    }
+
+    .pay-button, .back-button {
+        width: 100%;
+        margin: 5px 0;
+    }
 }

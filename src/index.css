@@ -1,0 +1,20 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'ComicNeueBoldItalic', system-ui, -apple-system, sans-serif;
+    font-weight: bold;
+    font-style: italic;
+    color: #333;
+    line-height: 1.5;
+    background-color: #f0f0f0;
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+.page-wrapper {
+    width: 100%;
+    max-width: 1600px;
+    margin: 0 auto;
+    padding: 0 30px;
+    box-sizing: border-box;
+}
