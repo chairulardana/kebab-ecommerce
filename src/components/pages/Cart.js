@@ -3,6 +3,7 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { Container, Table, Button, Form, Alert, Spinner } from 'react-bootstrap';
 import '../styles/Cart.css';
+import { jwtDecode } from 'jwt-decode';
 
 const Cart = () => {
     const [cartItems, setCartItems] = useState([]);
@@ -26,7 +27,7 @@ const Cart = () => {
         cart.forEach(item => {
             const category = item.nama_Minuman ? "drinks" :
                 item.nama_Kebab ? "kebabs" :
-                    item.nama_Paket ? "paketMakanan" :
+                    item.nama_Paket ? "paketMakanans" :
                         item.nama_Snack ? "snacks" : null;
 
             if (storedStocks[category]) {
@@ -47,50 +48,60 @@ const Cart = () => {
         }
         setCartItems(updatedCart);
         localStorage.setItem("cart", JSON.stringify(updatedCart));
+        window.dispatchEvent(new Event("cart-updated")); // 🚩 trigger update
     };
 
     const handlePayment = async () => {
-      const token = localStorage.getItem('token');
-      console.log("Token:", token); // Tambahkan log ini
+        const token = localStorage.getItem('token');
 
-      if (!token) {
-          navigate('/login');
-          return;
-      }
+        if (!token) {
+            navigate('/login');
+            return;
+        }
 
-      if (!paymentMethod) {
-          setShowAlert(true);
-          return;
-      }
+        if (!paymentMethod) {
+            setShowAlert(true);
+            return;
+        }
 
-      const transactionData = {
-        id_Drink: cartItems.find(item => item.nama_Minuman)?.id || 0,
-        id_Kebab: cartItems.find(item => item.nama_Kebab)?.id || 0,
-        id_Snack: cartItems.find(item => item.nama_Snack)?.id || 0,
-        id_Paket: cartItems.find(item => item.nama_Paket)?.id || 0,
-        tanggalTransaksi: new Date().toISOString(),
-        jumlah: cartItems.reduce((sum, item) => sum + (item.quantity || 0), 0),
-        totalHarga: calculateTotal()
+        try {
+            const decodedToken = jwtDecode(token);
+            const idUser = decodedToken['http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier'];
+
+            for (const item of cartItems) {
+                let transactionData = {
+                    id_User: parseInt(idUser),
+                    tanggalTransaksi: new Date().toISOString(),
+                    jumlah: parseInt(item.quantity || 0),
+                    totalHarga: parseFloat(((item.harga || item.harga_Paket_After_Diskon || 0) * (item.quantity || 0)).toFixed(2)) || 0,
+                };
+
+                if (item.nama_Minuman) transactionData.id_Drink = item.id_Drink;
+                else if (item.nama_Kebab) transactionData.id_Kebab = item.id_Kebab;
+                else if (item.nama_Snack) transactionData.id_Snack = item.id_Snack;
+                else if (item.nama_Paket) transactionData.id_Paket = item.id_Paket;
+
+                const response = await axios.post('http://192.168.52.157:9999/api/DetailTransaksi', transactionData, {
+                    headers: { Authorization: `Bearer ${token}` },
+                });
+
+                if (response.status !== 200) {
+                    throw new Error(`Gagal memproses pembayaran untuk ${item.nama_Minuman || item.nama_Kebab || item.nama_Paket || item.nama_Snack || "item tidak dikenal"}.`);
+                }
+            }
+
+            alert(`Pembayaran berhasil menggunakan ${paymentMethod}!`);
+            updateStock(cartItems);
+            localStorage.removeItem("cart");
+            window.dispatchEvent(new Event("cart-updated")); // 🚩 trigger update
+            setCartItems([]);
+            navigate('/menu');
+
+        } catch (error) {
+            console.error("Gagal memproses pembayaran:", error.response?.data || error.message);
+            alert("Terjadi kesalahan saat menyimpan transaksi: " + (error.response?.data?.message || error.message));
+        }
     };
-
-    try {
-        const response = await axios.post('http://192.168.52.157:9999/api/DetailTransaksi', transactionData, {
-            headers: {
-                Authorization: `Bearer ${token}`,
-              },
-          });
-          if (response.status === 200) {
-              alert(`Pembayaran berhasil menggunakan ${paymentMethod}!`);
-              updateStock(cartItems);
-              localStorage.removeItem("cart");
-              setCartItems([]);
-              navigate('/menu');
-          }
-      } catch (error) {
-          console.error("Gagal memproses pembayaran:", error.response?.data || error.message);
-          alert("Terjadi kesalahan saat menyimpan transaksi.");
-      }
-  };
 
     if (loading) return <Spinner animation="border" role="status"><span className="visually-hidden">Loading...</span></Spinner>;
 
@@ -114,7 +125,7 @@ const Cart = () => {
                         <tbody>
                             {cartItems.map((item, index) => (
                                 <tr key={index}>
-                                    <td>{item.nama_Minuman || item.nama_Kebab || item.nama_Paket || item.nama_Snack || "Tidak diketahui"}</td>
+                                    <td>{item.nama_Paket || item.nama_Minuman || item.nama_Kebab || item.nama_Snack || "Tidak diketahui"}</td>
                                     <td>Rp {(item.harga || item.harga_Paket_After_Diskon || 0).toLocaleString('id-ID')}</td>
                                     <td>{item.quantity || 0}</td>
                                     <td>Rp {((item.harga || item.harga_Paket_After_Diskon || 0) * (item.quantity || 0)).toLocaleString('id-ID')}</td>

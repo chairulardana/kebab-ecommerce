@@ -9,7 +9,6 @@ import Login from './components/pages/Login';
 import Register from './components/pages/Register';
 import Cart from './components/pages/Cart';
 import './App.css';
-import { Container } from 'react-bootstrap';
 
 function App() {
     const navbarRef = useRef(null);

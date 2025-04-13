@@ -14,20 +14,21 @@ body {
   font-style: italic;
   color: #333;
   line-height: 1.5;
+  
 }
 
 .menu-content-area {
-  max-width: 1200px;
-  margin: auto;
-  padding: 20px;
+  max-width: 1000px;
+  margin: 20px;
+  padding: 50px;
   background-color: #f9f9f9;
   border-radius: 12px;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-  margin-top: 120%; /* Diperbaiki agar tidak terlalu jauh ke bawah */
+  margin-bottom: 10px;
 }
 
 .menu-category {
-  margin-bottom: 30px;
+  margin-bottom: 3px;
 }
 
 .menu-category h2 {
@@ -35,8 +36,8 @@ body {
   margin-bottom: 20px;
   color: #ffa600;
   font-size: 2.2rem;
-  padding: 10px 0;
-  border-bottom: 2px solid #ff7b00; /* Garis bawah untuk pemisah */
+  padding: 10px auto;
+  border-bottom: 2px solid #ff7b00;
 }
 
 .menu-items {
@@ -63,16 +64,17 @@ body {
   animation: fadeIn 0.8s ease-in-out;
   padding: 15px;
   text-align: left;
-  min-height: 350px; /* Agar card memiliki ukuran yang lebih konsisten */
+  min-height: auto;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  position: relative; /* Tambahkan position relative */
 }
 
 .menu-image {
   width: 100%;
   height: auto;
-  max-height: 180px; /* Disesuaikan agar lebih proporsional */
+  max-height: 180px;
   object-fit: cover;
   border-radius: 8px;
 }
@@ -84,7 +86,7 @@ body {
 .menu-item-body h3 {
   font-size: 1.6rem;
   margin-bottom: 8px;
-  text-transform: capitalize; /* Teks akan otomatis memiliki huruf kapital di awal kata */
+  text-transform: capitalize;
 }
 
 .menu-price {
@@ -115,6 +117,8 @@ body {
 
 .stock-overlay {
   position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
   background-color: rgba(0, 0, 0, 0.7);
@@ -126,6 +130,10 @@ body {
   font-weight: bold;
 }
 
+.menu-image-modal {
+  max-height: 300px; /* Sesuaikan tinggi maksimum sesuai kebutuhan */
+  object-fit: contain; /* Agar gambar tidak terdistorsi */
+}
 
 /* Media Queries untuk Responsivitas */
 @media (max-width: 1024px) {
@@ -137,6 +145,6 @@ body {
 @media (max-width: 768px) {
   .menu-items {
       grid-template-columns: 1fr;
-      gap: 15px; /* Memberikan jarak tambahan antar card */
+      gap: 15px;
   }
 }

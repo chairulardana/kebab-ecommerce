@@ -10,10 +10,10 @@ body {
 }
 
 .auth-container {
-    max-width: 800px;
+    max-width: 400px; /* Lebar container yang lebih kecil */
     margin: 50px auto;
-    padding: 20px;
-    background-color: #f9f9f9;
+    padding: 30px; /* Padding lebih besar untuk ruang yang lebih baik */
+    background-color: rgba(255, 255, 255, 0.9); /* Latar belakang semi-transparan */
     border-radius: 12px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 }
@@ -21,26 +21,54 @@ body {
 .auth-title {
     font-size: 2rem;
     font-weight: bold;
-    margin-bottom: 20px;
+    margin-bottom: 30px; /* Margin lebih besar untuk ruang yang lebih baik */
+    text-align: center; /* Pusatkan judul */
+    color: #FF4500; /* Warna judul yang sama dengan border input */
+}
+
+.form-group {
+    margin-bottom: 20px; /* Margin lebih besar untuk ruang yang lebih baik */
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    color: #555;
+    font-weight: bold; /* Label lebih tebal */
 }
 
 .auth-input {
     width: 100%;
-    padding: 10px;
-    margin: 10px 0;
+    padding: 12px; /* Padding lebih besar untuk input */
+    margin: 5px 0;
     border: 2px solid #FF4500;
     border-radius: 8px;
+    box-sizing: border-box; /* Pastikan padding dan border termasuk dalam lebar */
+}
+
+.password-input {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.password-toggle-icon {
+    position: absolute;
+    right: 10px;
+    cursor: pointer;
+    color: #777;
 }
 
 .auth-button {
     background-color: #FFA500;
     color: #fff;
     border: none;
-    padding: 10px 20px;
+    padding: 12px 20px; /* Padding lebih besar untuk tombol */
     width: 100%;
     border-radius: 8px;
     cursor: pointer;
     transition: background 0.3s;
+    font-weight: bold; /* Tombol lebih tebal */
 }
 
 .auth-button:hover {
@@ -50,8 +78,17 @@ body {
 .auth-link {
     color: #FFA500;
     text-decoration: none;
+    text-align: center; /* Pusatkan tautan */
+    display: block; /* Tautan sebagai blok agar text-align berfungsi */
+    margin-top: 20px; /* Margin atas untuk ruang yang lebih baik */
 }
 
 .auth-link:hover {
     text-decoration: underline;
+}
+
+.error-message {
+    color: red;
+    text-align: center;
+    margin-bottom: 10px;
 }

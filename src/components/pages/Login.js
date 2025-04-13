@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import { jwtDecode } from 'jwt-decode';
 import '../styles/auth.css';
 
 const Login = () => {
@@ -15,8 +16,18 @@ const Login = () => {
                 password: password,
             });
 
-            localStorage.setItem('token', response.data.token);
-            navigate('/menu'); // Arahkan ke halaman menu setelah login berhasil
+            const token = response.data.token;
+            const decodedToken = jwtDecode(token);
+
+            const role = decodedToken["http://schemas.microsoft.com/ws/2008/06/identity/claims/role"];
+
+            if (role !== 'User') {
+                alert('Hanya pengguna dengan role "User" yang dapat login.');
+                return;
+            }
+
+            localStorage.setItem('token', token);
+            navigate('/menu');
         } catch (error) {
             console.error('Login failed:', error.response?.data || error.message);
             alert('Login gagal. Periksa email dan password Anda.');
